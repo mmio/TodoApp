@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import InputForm from '../InputForm/InputForm'
+import KeyboardInput from '../InputForm/InputForm'
 import CheckList from '../CheckList/CheckList'
 
 import { TodoItem } from '../TodoContainer/TodoContainer'
@@ -16,8 +16,13 @@ const SearchableCheckList: React.FC<Props> = ({ items }) => {
 
     return (
         <>
-            <InputForm onInputChange={ setSearchTerm } />
+            <KeyboardInput onInputChange={ setSearchTerm } placeholder={'Search...'} initValue={searchTerm} />
+            {/* <br />
+            <input type={'checkbox'} name={'hide'} />
+            <label htmlFor={'hide'}> Hide completed</label> */}
+            <hr />
             <CheckList items={filterTerms(items, searchTerm)} />
+            <hr />
         </>
     )
 }

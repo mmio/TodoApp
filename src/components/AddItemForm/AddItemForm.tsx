@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import InputForm from '../InputForm/InputForm'
+import KeyboardInput from '../InputForm/InputForm'
 
 type Props = {
     addAction: (text: string) => void
 }
 
 const AddItemForm: React.FC<Props> = ({ addAction }) => {
-    const [searchTerm, setSearchTerm] = useState<string>('')
+    const [newItem, setNewItem] = useState<string>('')
 
     return (
         <>
-            <InputForm onInputChange={setSearchTerm}/>
-            <button onClick={() => addAction(searchTerm)}>+</button>
+            <KeyboardInput onInputChange={setNewItem} placeholder={'New item...'} initValue={newItem} />
+            <button onClick={() => {setNewItem(''); addAction(newItem)}}>+</button>
         </>
     )
 }
