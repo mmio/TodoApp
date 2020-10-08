@@ -24,10 +24,10 @@ const TodoContainer = () => {
     ])
 
     return (
-        <>
+        <div style={{margin: '0 auto', width: '300px'}}>
             <SearchableCheckList items={ mockData }/>
             <AddItemForm addAction={ (text: string) => setMockData(addMockData(text, mockData)) }/>
-        </>
+        </div>
     )
 }
 

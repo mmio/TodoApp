@@ -7,7 +7,7 @@ type Props = {
 }
 
 const TodoItem: React.FC<Props> = ({ item }) => (
-    <div> <input type={'checkbox'}/ ><span>{item.text}</span> </div>
+    <div> <input type={'checkbox'}/ > <span>{item.text}</span> </div>
 )
 
 export default TodoItem
