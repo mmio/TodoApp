@@ -1,15 +1,18 @@
-import React from 'react'
-// import InputForm from '../InputForm/InputForm'
+import React, { useState } from 'react'
+import InputForm from '../InputForm/InputForm'
 
 type Props = {
-    addAction: () => void
+    addAction: (text: string) => void
 }
 
-const AddItemForm: React.FC<Props> = () => (
-    <>
-        {/* <InputForm onInputChange={changeInput}/>
-        <IconButton onClick={addItem}/> */}
-    </>
-)
+const AddItemForm: React.FC<Props> = ({ addAction }) => {
+    const [searchTerm, setSearchTerm] = useState('')
 
+    return (
+        <>
+            <InputForm onInputChange={setSearchTerm}/>
+            <button onClick={() => {addAction(searchTerm);console.log(searchTerm)}}>Add</button>
+        </>
+    )
+}
 export default AddItemForm

@@ -1,24 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import InputForm from '../InputForm/InputForm'
+import CheckList from '../CheckList/CheckList'
 
-type Item = {
-    id: Number,
-    text: String,
-    checked: Boolean
-}
+import { TodoItem } from '../TodoContainer/TodoContainer'
 
 type Props = {
-    items: Array<Item>
+    items: Array<TodoItem>
 }
 
-const filterTerms = (items: Array<Item>, term: string): Array<Item> =>
-    items.filter((item: Item) => item.text.includes(term))
+const filterTerms = (items: Array<TodoItem>, term: string): Array<TodoItem> =>
+    items.filter((item: TodoItem) => item.text.includes(term))
 
 const SearchableCheckList: React.FC<Props> = ({ items }) => {
-    // filterTerms(items, 'hello')
+    const [searchTerm, setSearchTerm] = useState('')
+
     return (
         <>
-            {/* <InputForm onInputChange={changeSearchPhrase} />
-            <CheckList items={filterTerms(items, term)} /> */}
+            <InputForm onInputChange={ setSearchTerm } />
+            <CheckList items={filterTerms(items, searchTerm)} />
         </>
     )
 }
