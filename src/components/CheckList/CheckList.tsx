@@ -8,12 +8,12 @@ type Props = {
     onToggle: (id: string) => void
 }
 
-const todoToReactElement = (item: TodoItem, onToggle: (id: string) => void): ReactElement =>
-    <Item key={item.id} item={item} onToggle={() => onToggle(item.id)}/>
-
 const CheckList: React.FC<Props> = ({ items, onToggle }) => (
         <>
-            {items.map((item) => todoToReactElement(item, onToggle))}
+            {
+                items.map((item) =>
+                    <Item key={item.id} item={item} onToggle={() => onToggle(item.id)}/>)
+            }
         </>
 )
 
