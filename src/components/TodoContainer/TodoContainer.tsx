@@ -11,9 +11,13 @@ export type TodoItem = {
     checked: boolean
 }
 
-const addMockItem = (text: string, data: Array<TodoItem>): Array<TodoItem> => {
-    return [...data, {id: uuidv4(), text, checked: false}]
-}
+const addMockItem = (text: string, data: Array<TodoItem>): Array<TodoItem> => 
+    [...data, {id: uuidv4(), text, checked: false}]
+
+const toggleItem = (id: string, items: Array<TodoItem>) =>
+    items.map(item => (item.id === id)
+                        ? {...item, checked: !item.checked}
+                        : item)
 
 const mockItems = [
     {id: uuidv4(), text: 'Hello', checked: true},
@@ -25,10 +29,13 @@ const mockItems = [
 const TodoContainer = () => {
     const [mockData, setMockData] = useState<Array<TodoItem>>(mockItems)
 
+    const toggleById = (id: string) => setMockData(toggleItem(id, mockData))
+    const addByName = (text: string) => setMockData(addMockItem(text, mockData))
+
     return (
         <div style={{margin: '0 auto', width: '300px'}}>
-            <SearchableCheckList items={ mockData }/>
-            <AddItemForm addAction={ (text: string) => setMockData(addMockItem(text, mockData)) }/>
+            <SearchableCheckList items={ mockData } onToggle={toggleById}/>
+            <AddItemForm addAction={addByName}/>
         </div>
     )
 }

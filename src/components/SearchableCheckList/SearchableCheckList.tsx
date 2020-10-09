@@ -1,27 +1,23 @@
 import React, { useState } from 'react'
-import KeyboardInput from '../InputForm/InputForm'
+
 import CheckList from '../CheckList/CheckList'
+import ItemFilter from '../ItemFilters/ItemFilters'
 
 import { TodoItem } from '../TodoContainer/TodoContainer'
 
 type Props = {
     items: Array<TodoItem>
+    onToggle: (id: string) => void
 }
 
-const filterTerms = (items: Array<TodoItem>, term: string): Array<TodoItem> =>
-    items.filter((item: TodoItem) => item.text.includes(term))
-
-const SearchableCheckList: React.FC<Props> = ({ items }) => {
-    const [searchTerm, setSearchTerm] = useState('')
+const SearchableCheckList: React.FC<Props> = ({ items, onToggle}) => {
+    const [filteredItems, setFilteredItems] = useState<Array<TodoItem>>(items)
 
     return (
         <>
-            <KeyboardInput onInputChange={ setSearchTerm } placeholder={'Search...'} initValue={searchTerm} />
-            {/* <br />
-            <input type={'checkbox'} name={'hide'} />
-            <label htmlFor={'hide'}> Hide completed</label> */}
+            <ItemFilter items={items} onFilter={setFilteredItems} />
             <hr />
-            <CheckList items={filterTerms(items, searchTerm)} />
+            <CheckList items={filteredItems} onToggle={onToggle}/>
             <hr />
         </>
     )
