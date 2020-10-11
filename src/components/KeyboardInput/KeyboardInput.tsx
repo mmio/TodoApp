@@ -6,17 +6,13 @@ type Props = {
     initValue?: string
 }
 
-const KeyboardInput: React.FC<Props> = ({ onInputChange, placeholder = '', initValue=''}) => {
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => onInputChange(e.target.value)
-
-    return (
-        <input
-            type={'textField'}
-            value={initValue}
-            placeholder={placeholder}
-            onChange={handleInputChange}
-        />
-    )
-}
+const KeyboardInput: React.FC<Props> = ({ onInputChange, placeholder = '', initValue=''}) => (
+    <input
+        type={'textField'}
+        value={initValue}
+        placeholder={placeholder}
+        onChange={e => onInputChange(e.target.value)}
+    />
+)
 
 export default KeyboardInput

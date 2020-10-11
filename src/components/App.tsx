@@ -1,6 +1,6 @@
 import React from 'react'
-import TodoContainer from './TodoContainer/TodoContainer'
+import AppRouter from './AppRouter'
 
-const App = () => (<TodoContainer />)
+const App = () => (<AppRouter/>)
 
 export default App

@@ -15,7 +15,16 @@ const toggleItem = (id: string, state: TodoListState) =>
 
 const addItem = (name: string, state: TodoListState) =>
     produce(state, draft => {
-        draft.items.push({id: uuidv4(), checked: false, text: name})
+        draft.items.push({id: uuidv4(), checked: false, text: name, deleted: false})
+    })
+
+const deleteItem = (id: string, state: TodoListState) =>
+    produce(state, draft => {
+        const item = draft.items.find(item => item.id === id)
+
+        if (item) {
+            item.deleted = true
+        }
     })
 
 const todoReducer = (
@@ -24,11 +33,13 @@ const todoReducer = (
 ): TodoListState => {
   switch (action.type) {
     case 'ADD_ITEM':
-      return addItem(action.payload, state)
+        return addItem(action.payload, state)
     case 'TOGGLE_ITEM':
-      return toggleItem(action.payload, state)
+        return toggleItem(action.payload, state)
+    case 'DELETE_ITEM':
+        return deleteItem(action.payload, state)
     default:
-      return state
+        return state
   }
 }
 

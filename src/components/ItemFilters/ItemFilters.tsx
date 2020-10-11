@@ -14,8 +14,8 @@ type FilterFunction<T> = {
 }
 
 const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
-    const [showHidden, setShowHidden] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
+    const [showHidden, setShowHidden] = useState(false)
     const [showCompleted, setShowCompleted] = useState(false)
 
     const filterMatchingItems = (item: TodoItem) =>
@@ -27,6 +27,9 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
     const filterUncheckedItems = (item: TodoItem) =>
         item.checked === false
 
+    const filterDeleted = (item: TodoItem) =>
+        item.deleted !== true
+
     const filterOnCondition = <T, >(condition: boolean, filter: FilterFunction<T>) =>
         (item: T) =>
             (condition)
@@ -36,7 +39,8 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
     const filters: Array<FilterFunction<TodoItem>> = [
         filterMatchingItems,
         filterOnCondition(showHidden, filterUncheckedItems),
-        filterOnCondition(showCompleted, filterCheckedItems)
+        filterOnCondition(showCompleted, filterCheckedItems),
+        filterDeleted
     ]
     
     useEffect(() => {

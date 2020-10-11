@@ -5,14 +5,22 @@ import { TodoItem } from '../TodoContainer/TodoContainer'
 
 type Props = {
     items: Array<TodoItem>
-    onToggle: (id: string) => void
+    showDeleteButton?: boolean
+    onToggle?: (id: string) => void
+    onDelete?: (id: string) => void
 }
 
-const CheckList: React.FC<Props> = ({ items, onToggle }) => (
+const CheckList: React.FC<Props> = ({items, showDeleteButton = true, onToggle = () => {}, onDelete = () => {} }) => (
         <>
             {
-                items.map((item) =>
-                    <Item key={item.id} item={item} onToggle={() => onToggle(item.id)}/>)
+                items.map(item =>
+                    <Item
+                        key={item.id}
+                        item={item}
+                        onToggle={() => onToggle(item.id)}
+                        onDelete={() => onDelete(item.id)}
+                        showDeleteButton={showDeleteButton}
+                    />)
             }
         </>
 )

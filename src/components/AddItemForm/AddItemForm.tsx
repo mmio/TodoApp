@@ -5,20 +5,20 @@ type Props = {
     addAction: (text: string) => void
 }
 
-const AddItemForm = ({ addAction } : Props) => {
-    const [newItem, setNewItem] = useState('')
+const AddItemForm: React.FC<Props> = ({ addAction }) => {
+    const [name, setName] = useState('')
 
     const handleClick = () => {
-        setNewItem('')
-        addAction(newItem)
+        setName('')
+        addAction(name)
     }
 
     return (
         <>
             <KeyboardInput
-                onInputChange={setNewItem}
+                initValue={name}
+                onInputChange={setName}
                 placeholder={'New item...'}
-                initValue={newItem}
             />
             <button onClick={handleClick}>+</button>
         </>
