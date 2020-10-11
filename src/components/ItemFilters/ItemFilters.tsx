@@ -1,9 +1,6 @@
 import KeyboardInput from '../KeyboardInput/KeyboardInput'
 import React, { useEffect, useState } from 'react'
 
-import CheckboxItemFilter from '../Checkbox/CheckboxItemFilter'
-import InputItemFilter from '../KeyboardInput/InputItemFilter'
-
 import { TodoItem } from '../TodoContainer/TodoContainer'
 import Checkbox from '../Checkbox/Checkbox'
 
