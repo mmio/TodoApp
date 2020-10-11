@@ -1,0 +1,2 @@
+const ADD_ITEM = 'ADD_ITEM'
+const TOGGLE_ITEM = 'TOGGLE_ITEM'
