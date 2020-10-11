@@ -12,6 +12,7 @@ type Props = {
 const TodoItem: React.FC<Props> = ({ item, onToggle }) => (
     <>
         <Checkbox onToggle={onToggle} label={item.text} checked={item.checked} />
+        <br />
     </>
 )
 

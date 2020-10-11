@@ -1,85 +1,73 @@
+import KeyboardInput from '../KeyboardInput/KeyboardInput'
 import React, { useEffect, useState } from 'react'
 
-import KeyboardInput from '../KeyboardInput/KeyboardInput'
-import Checkbox from '../Checkbox/Checkbox'
 import CheckboxItemFilter from '../Checkbox/CheckboxItemFilter'
 import InputItemFilter from '../KeyboardInput/InputItemFilter'
 
 import { TodoItem } from '../TodoContainer/TodoContainer'
+import Checkbox from '../Checkbox/Checkbox'
 
 type Props = {
     items: Array<TodoItem>
     onFilter: (arg0: Array<TodoItem>) => void
 }
 
-// type FilterOptions = {
-//     searchTerm: string
-//     hideCompleted: boolean
-// }
-
-// const createFilter = (flag: (arg0: FilterOptions) => boolean, condition: (arg0: TodoItem, arg1: FilterOptions) => boolean) =>
-//     (options: FilterOptions) =>
-//         (item: TodoItem) =>
-//             flag(options) ? condition(item, options) : true
-
-// const hideComletedFilter = createFilter(
-//     options => options.hideCompleted,
-//     item => item.checked === false
-// )
-
-// const termMatchFilter = createFilter(
-//     options => options.searchTerm !== '',
-//     (item, options) => item.text.toLowerCase().includes(options.searchTerm.toLowerCase())
-// )
-
-// const applyFilters = (items: Array<TodoItem>, filters: Array<(item: TodoItem) => boolean>): Array<TodoItem> =>
-//     filters.reduce((filteredItems, filter) =>
-//         filteredItems.filter(filter)
-//     , items)
+type FilterFunction<T> = {
+    (arg0: T): boolean
+}
 
 const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
-    // const [filterOptions, setFilterOptions] = useState<FilterOptions>({
-    //     searchTerm: '',
-    //     hideCompleted: false,
-    // })
+    const [showHidden, setShowHidden] = useState(false)
+    const [searchTerm, setSearchTerm] = useState('')
+    const [showCompleted, setShowCompleted] = useState(false)
 
-    // const filters: Array<(item: TodoItem) => boolean> = [
-    //     hideComletedFilter,
-    //     termMatchFilter,
-    // ].map(filter => filter(filterOptions))
+    const filterMatchingItems = (item: TodoItem) =>
+        item.text.toLowerCase().includes(searchTerm.toLowerCase())
 
-    // useEffect(() => {
-    //     onFilter(applyFilters(items, filters))
-    // }, [items, filterOptions])
+    const filterCheckedItems = (item: TodoItem) =>
+        item.checked === true
 
-    // const setNewSearchterm = (searchTerm: string) => setFilterOptions({...filterOptions, searchTerm})
-    // const setNewHidden = () => setFilterOptions({...filterOptions, hideCompleted: !filterOptions.hideCompleted})
+    const filterUncheckedItems = (item: TodoItem) =>
+        item.checked === false
 
+    const filterOnCondition = <T, >(condition: boolean, filter: FilterFunction<T>) =>
+        (item: T) =>
+            (condition)
+            ? filter(item)
+            : true
+
+    const filters: Array<FilterFunction<TodoItem>> = [
+        filterMatchingItems,
+        filterOnCondition(showHidden, filterUncheckedItems),
+        filterOnCondition(showCompleted, filterCheckedItems)
+    ]
+    
+    useEffect(() => {
+        const filteredItems = filters.reduce(
+            (acc: Array<TodoItem>, filter: FilterFunction<TodoItem>) =>
+                acc.filter(filter)
+            ,items)
+
+        onFilter(filteredItems)
+    }, [items, showHidden, searchTerm, showCompleted])
+    
     return (
         <>
-            {/* <KeyboardInput
-                initValue={filterOptions.searchTerm}
+            <KeyboardInput
+                initValue={searchTerm}
                 placeholder={'Search...'}
-                onInputChange={setNewSearchterm}
+                onInputChange={setSearchTerm}
             />
-            <br /> */}
-            <InputItemFilter 
-                placeholder={'Search...'}
-                items={items}
-                onInputChange={onFilter}
-                filter={(item: TodoItem, term: string) => item.text.toLowerCase().includes(term.toLowerCase())}
-            />
-            {/* <Checkbox
-                checked={filterOptions.hideCompleted}
-                label={'Hide completed'}
-                onToggle={setNewHidden}
-            /> */}
             <br />
-            <CheckboxItemFilter
+            <Checkbox
+                checked={showHidden}
                 label={'Hide completed'}
-                onFilter={onFilter}
-                items={items}
-                filter={(item) => !item.checked}
+                onToggle={() => setShowHidden(!showHidden)}
+            />
+            <Checkbox
+                checked={showCompleted}
+                label={'Show completed'}
+                onToggle={() => setShowCompleted(!showCompleted)}
             />
         </>
     )

@@ -12,9 +12,13 @@ const Checkbox: React.FC<Props> = ({ checked, label, onToggle}) => {
     
     return (
         <>
-            <input type={'checkbox'} name={randomName} checked={checked} onChange={onToggle}/>
+            <input
+                type={'checkbox'}
+                name={randomName}
+                checked={checked}
+                onChange={onToggle}
+            />
             <label htmlFor={randomName}> {label} </label>
-            <br />
         </>
     )
 }

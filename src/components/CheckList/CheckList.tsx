@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import Item from '../TodoItem/TodoItem'
 
 import { TodoItem } from '../TodoContainer/TodoContainer'
