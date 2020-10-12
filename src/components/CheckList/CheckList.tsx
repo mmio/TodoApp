@@ -10,7 +10,12 @@ type Props = {
     onDelete?: (id: string) => void
 }
 
-const CheckList: React.FC<Props> = ({items, showDeleteButton = true, onToggle = () => {}, onDelete = () => {} }) => (
+const CheckList: React.FC<Props> = ({
+    items,
+    showDeleteButton = true,
+    onToggle = () => {},
+    onDelete = () => {}
+}) => (
         <>
             {
                 items.map(item =>

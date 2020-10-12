@@ -2,7 +2,9 @@ import KeyboardInput from '../KeyboardInput/KeyboardInput'
 import React, { useEffect, useState } from 'react'
 
 import { TodoItem } from '../TodoContainer/TodoContainer'
-import Checkbox from '../Checkbox/Checkbox'
+import RadioButton from '../RadioButton/RadioButton'
+
+import styles from '../../styles/styles.module.css'
 
 type Props = {
     items: Array<TodoItem>
@@ -17,6 +19,8 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [showHidden, setShowHidden] = useState(false)
     const [showCompleted, setShowCompleted] = useState(false)
+
+    const unsetAll = () => {setShowCompleted(false), setShowHidden(false)}
 
     const filterMatchingItems = (item: TodoItem) =>
         item.text.toLowerCase().includes(searchTerm.toLowerCase())
@@ -38,39 +42,48 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
 
     const filters: Array<FilterFunction<TodoItem>> = [
         filterMatchingItems,
+        filterDeleted,
         filterOnCondition(showHidden, filterUncheckedItems),
-        filterOnCondition(showCompleted, filterCheckedItems),
-        filterDeleted
+        filterOnCondition(showCompleted, filterCheckedItems), 
     ]
     
     useEffect(() => {
         const filteredItems = filters.reduce(
             (acc: Array<TodoItem>, filter: FilterFunction<TodoItem>) =>
                 acc.filter(filter)
-            ,items)
+            , items)
 
         onFilter(filteredItems)
     }, [items, showHidden, searchTerm, showCompleted])
-    
+
     return (
-        <>
+        <div className={styles.roundBorder}>
             <KeyboardInput
                 initValue={searchTerm}
                 placeholder={'Search...'}
                 onInputChange={setSearchTerm}
             />
-            <br />
-            <Checkbox
-                checked={showHidden}
-                label={'Hide completed'}
-                onToggle={() => setShowHidden(!showHidden)}
-            />
-            <Checkbox
-                checked={showCompleted}
-                label={'Show completed'}
-                onToggle={() => setShowCompleted(!showCompleted)}
-            />
-        </>
+            <div className={styles.horizontalContainer} style={{marginTop: '0.5em'}} >
+                <RadioButton
+                    group={'a'}
+                    onToggle={unsetAll}
+                    label={'All'}
+                    checkedByDefault
+                />
+                <RadioButton
+                    group={'a'}
+                    onToggle={() => {unsetAll(), setShowHidden(true)}}
+                    checked={showHidden}
+                    label={'Hide completed'}
+                />
+                <RadioButton
+                    group={'a'}
+                    onToggle={() => {unsetAll(), setShowCompleted(true)}}
+                    checked={showCompleted}
+                    label={'Show completed only'}
+                />
+            </div>
+        </div>
     )
 }
 

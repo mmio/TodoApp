@@ -12,14 +12,12 @@ type Props = {
 }
 
 const SearchableCheckList: React.FC<Props> = ({ items, onToggle, onDelete}) => {
-    const [filteredItems, setFilteredItems] = useState<Array<TodoItem>>(items)
+    const [filteredItems, setFilteredItems] = useState<Array<TodoItem>>([])
 
     return (
         <>
             <ItemFilter items={items} onFilter={setFilteredItems} />
-            <hr />
             <CheckList items={filteredItems} onToggle={onToggle} onDelete={onDelete}/>
-            <hr />
         </>
     )
 }

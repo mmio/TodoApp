@@ -8,6 +8,7 @@ type Props = {
 
 const KeyboardInput: React.FC<Props> = ({ onInputChange, placeholder = '', initValue=''}) => (
     <input
+        style={{width: '100%'}}
         type={'textField'}
         value={initValue}
         placeholder={placeholder}

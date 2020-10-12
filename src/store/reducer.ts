@@ -1,8 +1,36 @@
 import { v4 as uuidv4 } from 'uuid'
-import {TodoListState, TodoAction} from './actions'
+import {TodoAction} from './actions'
 import produce from 'immer'
 
-const initialState: TodoListState = {items: []}
+type TodoItem = {
+    id: string,
+    text: string,
+    checked: boolean,
+    deleted: boolean
+}
+
+export type TodoListState = {
+    items: Array<TodoItem>
+}
+
+const initialState: TodoListState = {
+    items: [
+        {id: uuidv4(), text: 'Buy Milk', checked: false, deleted: false},
+        {id: uuidv4(), text: 'Take out trash', checked: true, deleted: false},
+        {id: uuidv4(), text: 'Finish homework', checked: true, deleted: true},
+        {id: uuidv4(), text: 'Feed the dog', checked: false, deleted: true},
+    ]
+}
+
+const addItem = (name: string, state: TodoListState) =>
+    produce(state, draft => {
+        draft.items.push({
+            id: uuidv4(),
+            text: name,
+            checked: false,
+            deleted: false
+        })
+    })
 
 const toggleItem = (id: string, state: TodoListState) =>
     produce(state, draft => {
@@ -11,11 +39,6 @@ const toggleItem = (id: string, state: TodoListState) =>
         if (item) {
             item.checked = !item.checked
         }
-    })
-
-const addItem = (name: string, state: TodoListState) =>
-    produce(state, draft => {
-        draft.items.push({id: uuidv4(), checked: false, text: name, deleted: false})
     })
 
 const deleteItem = (id: string, state: TodoListState) =>

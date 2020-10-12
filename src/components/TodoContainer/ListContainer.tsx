@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {TodoListState} from '../../store/actions'
+import {TodoListState} from '../../store/reducer'
 
 import CheckList from '../CheckList/CheckList'
+
+import styles from '../../styles/styles.module.css'
 
 export type TodoItem = {
     id: string,
@@ -18,12 +20,12 @@ const mapStateToProps = (state: TodoListState) => ({
 
 type Props = ReturnType<typeof mapStateToProps>
 
-const TodoContainer: React.FC<Props> = ({items}) => (
-    <div style={{margin: '0 auto', width: '400px'}}>
+const ListContainer: React.FC<Props> = ({items}) => (
+    <div className={styles.center}>
         <CheckList items={items} showDeleteButton={false}/>
     </div>
 )
 
 export default connect(
     mapStateToProps
-)(TodoContainer)
+)(ListContainer)

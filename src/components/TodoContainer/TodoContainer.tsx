@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addItem, TodoListState, toggleItem, deleteItem } from '../../store/actions'
+import { addItem, toggleItem, deleteItem } from '../../store/actions'
+import { TodoListState } from '../../store/reducer'
 
 import SearchableCheckList from '../SearchableCheckList/SearchableCheckList'
 import AddItemForm from '../AddItemForm/AddItemForm'
+
+import styles from '../../styles/styles.module.css'
 
 export type TodoItem = {
     id: string,
@@ -26,7 +29,7 @@ const mapDispatchToProps = {
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
 
 const TodoContainer: React.FC<Props> = ({items, addItem, toggleItem, deleteItem}) => (
-    <div style={{margin: '0 auto', width: '400px'}}>
+    <div className={styles.center}>
         <SearchableCheckList
             items={items}
             onToggle={toggleItem}
