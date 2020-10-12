@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from 'uuid'
 import {TodoAction} from './actions'
 import produce from 'immer'
 
+import {ADD_ITEM, TOGGLE_ITEM, DELETE_ITEM} from './actionTypes'
+
 export type TodoItem = {
     id: string,
     text: string,
@@ -55,11 +57,11 @@ const todoReducer = (
   action: TodoAction
 ): TodoListState => {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case ADD_ITEM:
         return addItem(action.payload, state)
-    case 'TOGGLE_ITEM':
+    case TOGGLE_ITEM:
         return toggleItem(action.payload, state)
-    case 'DELETE_ITEM':
+    case DELETE_ITEM:
         return deleteItem(action.payload, state)
     default:
         return state

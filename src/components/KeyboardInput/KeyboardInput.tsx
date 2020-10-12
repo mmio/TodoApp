@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './styles.module.css'
+import styles from '../../styles/styles.module.css'
 
 type Props = {
     onInputChange: (newInput: string) => void

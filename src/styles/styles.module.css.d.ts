@@ -5,3 +5,4 @@ export const card: string
 export const center: string
 export const spaceBetweenElements: string
 export const noMargin: string
+export const fullWidth: string

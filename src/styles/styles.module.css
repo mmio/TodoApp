@@ -36,3 +36,7 @@
 .noMargin {
     margin: 0;
 }
+
+.fullWidth {
+    width: 100%;
+}

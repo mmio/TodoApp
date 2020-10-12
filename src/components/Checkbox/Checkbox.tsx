@@ -1,6 +1,8 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import styles from '../../styles/styles.module.css'
+
 type Props = {
     checked: boolean
     label: string
@@ -9,12 +11,12 @@ type Props = {
 }
 
 const Checkbox: React.FC<Props> = ({ checked, label, name = uuidv4(), onToggle}) => (
-    <div>
+    <div className={styles.fullWidth} onClick={onToggle}>
         <input
             checked={checked}
             name={name}
-            onChange={onToggle}
             type={'checkbox'}
+            readOnly
         />
         <label htmlFor={name}> {label} </label>
     </div>
