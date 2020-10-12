@@ -1,0 +1,12 @@
+.rightMargin {
+    margin-right: 1em;
+}
+
+.padBottom {
+    padding-bottom: 1em;
+}
+
+.noDecoration {
+    text-decoration: none;
+    list-style-type: none;
+}

@@ -14,8 +14,11 @@
 .horizontalContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+}
+
+.spaceBetweenElements {
+    justify-content: space-between;
 }
 
 .card {
@@ -28,4 +31,8 @@
 .center {
     margin: 0 auto;
     width: 400px !important;
+}
+
+.noMargin {
+    margin: 0;
 }

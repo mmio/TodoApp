@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import {TodoAction} from './actions'
 import produce from 'immer'
 
-type TodoItem = {
+export type TodoItem = {
     id: string,
     text: string,
     checked: boolean,

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import styles from './styles.module.css'
+
 type Props = {
     onInputChange: (newInput: string) => void
     placeholder?: string
@@ -8,7 +10,7 @@ type Props = {
 
 const KeyboardInput: React.FC<Props> = ({ onInputChange, placeholder = '', initValue=''}) => (
     <input
-        style={{width: '100%'}}
+        className={styles.fullWidth}
         type={'textField'}
         value={initValue}
         placeholder={placeholder}

@@ -23,7 +23,7 @@ const AddItemForm: React.FC<Props> = ({ addAction }) => {
                 onInputChange={setName}
                 placeholder={'New item...'}
             />
-            <button onClick={handleClick}>+</button>
+            <button onClick={handleClick}>Add</button>
         </div>
     )
 }

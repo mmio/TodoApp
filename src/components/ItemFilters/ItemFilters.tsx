@@ -1,7 +1,7 @@
 import KeyboardInput from '../KeyboardInput/KeyboardInput'
 import React, { useEffect, useState } from 'react'
 
-import { TodoItem } from '../TodoContainer/TodoContainer'
+import { TodoItem } from '../../store/reducer'
 import RadioButton from '../RadioButton/RadioButton'
 
 import styles from '../../styles/styles.module.css'
@@ -63,7 +63,7 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
                 placeholder={'Search...'}
                 onInputChange={setSearchTerm}
             />
-            <div className={styles.horizontalContainer} style={{marginTop: '0.5em'}} >
+            <div className={styles.horizontalContainer}>
                 <RadioButton
                     group={'a'}
                     onToggle={unsetAll}

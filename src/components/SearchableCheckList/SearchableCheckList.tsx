@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import CheckList from '../CheckList/CheckList'
 import ItemFilter from '../ItemFilters/ItemFilters'
 
-import { TodoItem } from '../TodoContainer/TodoContainer'
+import { TodoItem } from '../../store/reducer'
 
 type Props = {
     items: Array<TodoItem>

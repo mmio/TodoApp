@@ -9,13 +9,6 @@ import AddItemForm from '../AddItemForm/AddItemForm'
 
 import styles from '../../styles/styles.module.css'
 
-export type TodoItem = {
-    id: string,
-    text: string,
-    checked: boolean,
-    deleted: boolean,
-}
-
 const mapStateToProps = (state: TodoListState) => ({
     items: state.items,
 })

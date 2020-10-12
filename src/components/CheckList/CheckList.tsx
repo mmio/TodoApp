@@ -1,7 +1,7 @@
 import React from 'react'
 import Item from '../TodoItem/TodoItem'
 
-import { TodoItem } from '../TodoContainer/TodoContainer'
+import { TodoItem } from '../../store/reducer'
 
 type Props = {
     items: Array<TodoItem>

@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Checkbox: React.FC<Props> = ({ checked, label, name = uuidv4(), onToggle}) => (
-    <div onClick={onToggle}>
+    <div>
         <input
             checked={checked}
             name={name}
