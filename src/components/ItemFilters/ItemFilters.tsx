@@ -1,8 +1,8 @@
-import KeyboardInput from '../KeyboardInput/KeyboardInput'
 import React, { useEffect, useState } from 'react'
 
 import { TodoItem } from '../../store/reducer'
 import RadioButton from '../RadioButton/RadioButton'
+import KeyboardInput from '../KeyboardInput/KeyboardInput'
 
 import styles from '../../styles/styles.module.css'
 

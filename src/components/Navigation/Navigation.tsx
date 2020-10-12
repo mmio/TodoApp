@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 const Navigation = () => (
     <nav className={styles.padBottom}>
-        <ul className={`${globalStyles.card} ${styles.noDecoration} ${globalStyles.horizontalContainer} ${globalStyles.noMargin}`}>
+        <ul className={`${globalStyles.card} ${globalStyles.horizontalContainer} ${globalStyles.noMargin} ${styles.noDecoration}`}>
             <li className={styles.rightMargin}>
                 <Link className={styles.noDecoration} to="/">Todo list</Link>
             </li>
