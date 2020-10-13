@@ -11,8 +11,8 @@
 		"no-let": false,
 		"no-array-mutation": true,
 		"no-object-mutation": false,
-		"no-this": false,
-		"no-class": false,
+		"no-this": true,
+		"no-class": true,
 		"no-mixed-interface": false,
 		"no-expression-statement": false,
 		"member-ordering": [
@@ -81,7 +81,8 @@
 		"eofline": false,
 		"indent": [
 			true,
-			"tabs"
+			"spaces",
+			4
 		],
 		"max-line-length": [
 			true,
