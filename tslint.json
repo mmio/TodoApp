@@ -1,6 +1,7 @@
 {
 	"extends": [
-		"tslint-immutable"
+		"tslint-immutable",
+		"tslint-config-prettier"
 	],
 	"rules": {
 		"no-var-keyword": true,
@@ -19,7 +20,7 @@
 			true,
 			"variables-before-functions"
 		],
-		"no-any": false,
+		"no-any": true,
 		"no-inferrable-types": [
 			false
 		],
@@ -86,7 +87,7 @@
 		],
 		"max-line-length": [
 			true,
-			250
+			120
 		],
 		"no-require-imports": false,
 		"no-trailing-whitespace": true,
