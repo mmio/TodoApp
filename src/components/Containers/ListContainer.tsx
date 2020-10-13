@@ -11,11 +11,11 @@ export type TodoItem = {
     id: string,
     text: string,
     checked: boolean,
-    deleted: boolean,
+    deleted: boolean
 }
 
 const mapStateToProps = (state: TodoListState) => ({
-    items: state.items,
+    items: state.items
 })
 
 type Props = ReturnType<typeof mapStateToProps>

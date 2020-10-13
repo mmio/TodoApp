@@ -44,9 +44,9 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
         filterMatchingItems,
         filterDeleted,
         filterOnCondition(showHidden, filterUncheckedItems),
-        filterOnCondition(showCompleted, filterCheckedItems), 
+        filterOnCondition(showCompleted, filterCheckedItems)
     ]
-    
+
     useEffect(() => {
         const filteredItems = filters.reduce(
             (acc: Array<TodoItem>, filter: FilterFunction<TodoItem>) =>
