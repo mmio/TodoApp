@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { TodoItem } from '../../store/reducer'
+import { TodoItem } from '../../store/types'
 import RadioButton from '../RadioButton/RadioButton'
 import KeyboardInput from '../KeyboardInput/KeyboardInput'
 

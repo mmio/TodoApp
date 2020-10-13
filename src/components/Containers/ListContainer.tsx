@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {TodoListState} from '../../store/reducer'
+import {TodoListState} from '../../store/types'
 
 import CheckList from '../CheckList/CheckList'
 
