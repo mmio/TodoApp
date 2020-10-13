@@ -2,7 +2,7 @@ import React from 'react'
 
 import Checkbox from '../Checkbox/Checkbox'
 
-import { TodoItem as Item } from '../../store/reducer'
+import { TodoItem as Item } from '../../store/types'
 
 import styles from '../../styles/styles.module.css'
 

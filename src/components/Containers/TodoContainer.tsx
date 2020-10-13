@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { addItem, toggleItem, deleteItem } from '../../store/actions'
-import { TodoListState } from '../../store/reducer'
+import { TodoListState } from '../../store/types'
 
 import SearchableCheckList from '../SearchableCheckList/SearchableCheckList'
 import AddItemForm from '../AddItemForm/AddItemForm'

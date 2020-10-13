@@ -1,19 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
-import {TodoAction} from './actions'
 import produce from 'immer'
 
-import {ADD_ITEM, TOGGLE_ITEM, DELETE_ITEM} from './actionTypes'
-
-export type TodoItem = {
-    id: string,
-    text: string,
-    checked: boolean,
-    deleted: boolean
-}
-
-export type TodoListState = {
-    items: Array<TodoItem>
-}
+import {ADD_ITEM, DELETE_ITEM, TodoActionTypes, TodoListState, TOGGLE_ITEM} from './types'
 
 const initialState: TodoListState = {
     items: [
@@ -54,7 +42,7 @@ const deleteItem = (id: string, state: TodoListState) =>
 
 const todoReducer = (
   state = initialState,
-  action: TodoAction
+  action: TodoActionTypes
 ): TodoListState => {
   switch (action.type) {
     case ADD_ITEM:
