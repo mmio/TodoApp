@@ -18,7 +18,7 @@ export type AddItemAction = {
     payload: string
 }
 
-export type ToggleItemAction ={
+export type ToggleItemAction = {
     type: typeof TOGGLE_ITEM,
     payload: string
 }
