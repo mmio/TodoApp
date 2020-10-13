@@ -1,9 +1,11 @@
 {
 	"extends": [
+		"tslint:latest",
 		"tslint-immutable",
 		"tslint-config-prettier"
 	],
 	"rules": {
+		"no-implicit-dependencies": false,
 		"no-var-keyword": true,
 		"no-parameter-reassignment": true,
 		"typedef": false,

@@ -7,20 +7,21 @@ import KeyboardInput from '../KeyboardInput/KeyboardInput'
 import styles from '../../styles/styles.module.css'
 
 type Props = {
-    items: Array<TodoItem>
-    onFilter: (arg0: Array<TodoItem>) => void
+    items: TodoItem[]
+    onFilter: (arg0: TodoItem[]) => void
 }
 
-type FilterFunction<T> = {
-    (arg0: T): boolean
-}
+type FilterFunction<T> = (arg0: T) => boolean
 
 const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [showHidden, setShowHidden] = useState(false)
     const [showCompleted, setShowCompleted] = useState(false)
 
-    const unsetAll = () => {setShowCompleted(false), setShowHidden(false)}
+    const unsetAll = () => {
+        setShowCompleted(false)
+        setShowHidden(false)
+    }
 
     const filterMatchingItems = (item: TodoItem) =>
         item.text.toLowerCase().includes(searchTerm.toLowerCase())
@@ -40,7 +41,7 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
             ? filter(item)
             : true
 
-    const filters: Array<FilterFunction<TodoItem>> = [
+    const filters: FilterFunction<TodoItem>[] = [
         filterMatchingItems,
         filterDeleted,
         filterOnCondition(showHidden, filterUncheckedItems),
@@ -49,7 +50,7 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
 
     useEffect(() => {
         const filteredItems = filters.reduce(
-            (acc: Array<TodoItem>, filter: FilterFunction<TodoItem>) =>
+            (acc: TodoItem[], filter: FilterFunction<TodoItem>) =>
                 acc.filter(filter)
             , items)
 
@@ -72,13 +73,19 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
                 />
                 <RadioButton
                     group={'a'}
-                    onToggle={() => {unsetAll(), setShowHidden(true)}}
+                    onToggle={() => {
+                        unsetAll()
+                        setShowHidden(true)
+                    }}
                     checked={showHidden}
                     label={'Hide completed'}
                 />
                 <RadioButton
                     group={'a'}
-                    onToggle={() => {unsetAll(), setShowCompleted(true)}}
+                    onToggle={() => {
+                        unsetAll()
+                        setShowCompleted(true)
+                    }}
                     checked={showCompleted}
                     label={'Show completed only'}
                 />

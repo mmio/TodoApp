@@ -6,7 +6,7 @@ export type TodoItem = {
 }
 
 export type TodoListState = {
-    items: Array<TodoItem>
+    items: TodoItem[]
 }
 
 export const ADD_ITEM = 'ADD_ITEM'

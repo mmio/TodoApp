@@ -6,13 +6,13 @@ import ItemFilter from '../ItemFilters/ItemFilters'
 import { TodoItem } from '../../store/types'
 
 type Props = {
-    items: Array<TodoItem>
+    items: TodoItem[]
     onToggle: (id: string) => void
     onDelete: (id: string) => void
 }
 
 const SearchableCheckList: React.FC<Props> = ({ items, onToggle, onDelete}) => {
-    const [filteredItems, setFilteredItems] = useState<Array<TodoItem>>([])
+    const [filteredItems, setFilteredItems] = useState<TodoItem[]>([])
 
     return (
         <>
