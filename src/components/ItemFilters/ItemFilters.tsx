@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { TodoItem } from '../../store/types'
+
 import RadioButton from '../RadioButton/RadioButton'
 import KeyboardInput from '../KeyboardInput/KeyboardInput'
 
@@ -18,7 +19,7 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
     const [showHidden, setShowHidden] = useState(false)
     const [showCompleted, setShowCompleted] = useState(false)
 
-    const unsetAll = () => {
+    const unsetRadioButtons = () => {
         setShowCompleted(false)
         setShowHidden(false)
     }
@@ -67,14 +68,14 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
             <div className={styles.horizontalContainer}>
                 <RadioButton
                     group={'a'}
-                    onToggle={unsetAll}
+                    onToggle={unsetRadioButtons}
                     label={'All'}
                     checkedByDefault
                 />
                 <RadioButton
                     group={'a'}
                     onToggle={() => {
-                        unsetAll()
+                        unsetRadioButtons()
                         setShowHidden(true)
                     }}
                     checked={showHidden}
@@ -83,7 +84,7 @@ const ItemFilter: React.FC<Props> = ({ items, onFilter }) => {
                 <RadioButton
                     group={'a'}
                     onToggle={() => {
-                        unsetAll()
+                        unsetRadioButtons()
                         setShowCompleted(true)
                     }}
                     checked={showCompleted}

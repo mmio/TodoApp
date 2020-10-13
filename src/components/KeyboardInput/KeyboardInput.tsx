@@ -8,7 +8,11 @@ type Props = {
     initValue?: string
 }
 
-const KeyboardInput: React.FC<Props> = ({ onInputChange, placeholder = '', initValue= ''}) => (
+const KeyboardInput: React.FC<Props> = ({
+    onInputChange,
+    placeholder = '',
+    initValue= ''
+}) => (
     <input
         className={styles.fullWidth}
         type={'textField'}

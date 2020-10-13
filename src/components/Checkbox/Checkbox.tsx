@@ -10,7 +10,12 @@ type Props = {
     onToggle: () => void
 }
 
-const Checkbox: React.FC<Props> = ({ checked, label, name = uuidv4(), onToggle}) => (
+const Checkbox: React.FC<Props> = ({
+    checked,
+    label,
+    name = uuidv4(),
+    onToggle
+}) => (
     <div className={styles.fullWidth} onClick={onToggle}>
         <input
             checked={checked}

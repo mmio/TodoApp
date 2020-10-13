@@ -17,7 +17,11 @@ const SearchableCheckList: React.FC<Props> = ({ items, onToggle, onDelete}) => {
     return (
         <>
             <ItemFilter items={items} onFilter={setFilteredItems} />
-            <CheckList items={filteredItems} onToggle={onToggle} onDelete={onDelete}/>
+            <CheckList
+                items={filteredItems}
+                onToggle={onToggle}
+                onDelete={onDelete}
+            />
         </>
     )
 }
