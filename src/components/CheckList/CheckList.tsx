@@ -1,10 +1,11 @@
 import React from 'react'
+
 import Item from '../TodoItem/TodoItem'
 
 import { TodoItem } from '../../store/types'
 
 type Props = {
-    items: Array<TodoItem>
+    items: TodoItem[]
     showDeleteButton?: boolean
     onToggle?: (id: string) => void
     onDelete?: (id: string) => void

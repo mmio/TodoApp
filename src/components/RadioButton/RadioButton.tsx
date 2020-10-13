@@ -10,7 +10,14 @@ type Props = {
     onToggle: () => void
 }
 
-const RadioButton: React.FC<Props> = ({ checked, checkedByDefault, label, id = uuidv4(), group = uuidv4(), onToggle}) => (
+const RadioButton: React.FC<Props> = ({
+    checked,
+    checkedByDefault,
+    label,
+    id = uuidv4(),
+    group = uuidv4(),
+    onToggle
+}) => (
     <>
         <input
             checked={checked}

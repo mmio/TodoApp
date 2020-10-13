@@ -8,7 +8,7 @@ const initialState: TodoListState = {
         {id: uuidv4(), text: 'Buy Milk', checked: false, deleted: false},
         {id: uuidv4(), text: 'Take out trash', checked: true, deleted: false},
         {id: uuidv4(), text: 'Finish homework', checked: true, deleted: true},
-        {id: uuidv4(), text: 'Feed the dog', checked: false, deleted: true},
+        {id: uuidv4(), text: 'Feed the dog', checked: false, deleted: true}
     ]
 }
 

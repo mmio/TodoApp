@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route} from "react-router-dom"
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 import TodoContainer from './components/Containers/TodoContainer'
 import ListContainer from './components/Containers/ListContainer'
@@ -12,8 +12,8 @@ const App = () => (
         <div>
             <Navigation />
 
-            <Route path="/" exact component={TodoContainer} />
-            <Route path="/tasks" component={ListContainer} />
+            <Route path='/' exact component={TodoContainer} />
+            <Route path='/tasks' component={ListContainer} />
         </div>
     </Router>
 )

@@ -1,8 +1,11 @@
 {
 	"extends": [
-		"tslint-immutable"
+		"tslint:latest",
+		"tslint-immutable",
+		"tslint-config-prettier"
 	],
 	"rules": {
+		"no-implicit-dependencies": false,
 		"no-var-keyword": true,
 		"no-parameter-reassignment": true,
 		"typedef": false,
@@ -11,15 +14,15 @@
 		"no-let": false,
 		"no-array-mutation": true,
 		"no-object-mutation": false,
-		"no-this": false,
-		"no-class": false,
+		"no-this": true,
+		"no-class": true,
 		"no-mixed-interface": false,
 		"no-expression-statement": false,
 		"member-ordering": [
 			true,
 			"variables-before-functions"
 		],
-		"no-any": false,
+		"no-any": true,
 		"no-inferrable-types": [
 			false
 		],
@@ -81,11 +84,12 @@
 		"eofline": false,
 		"indent": [
 			true,
-			"tabs"
+			"spaces",
+			4
 		],
 		"max-line-length": [
 			true,
-			250
+			120
 		],
 		"no-require-imports": false,
 		"no-trailing-whitespace": true,
@@ -127,7 +131,7 @@
 			"avoid-escape"
 		],
 		"semicolon": [
-			true,
+			false,
 			"always"
 		],
 		"variable-name": [

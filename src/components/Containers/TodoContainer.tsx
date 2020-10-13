@@ -10,7 +10,7 @@ import AddItemForm from '../AddItemForm/AddItemForm'
 import styles from '../../styles/styles.module.css'
 
 const mapStateToProps = (state: TodoListState) => ({
-    items: state.items,
+    items: state.items
 })
 
 const mapDispatchToProps = {
